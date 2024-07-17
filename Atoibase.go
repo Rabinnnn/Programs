@@ -38,3 +38,29 @@ func AtoiBase(s string, base string) int {
     
     return result
 }
+/* ALTERNATIVE
+func AtoiBase(s string, base string)int{
+	result := 0
+
+	if len(base) < 2{
+		return 0
+	}
+	seen := make(map[rune]bool)
+	baseM := make(map[rune]int)
+	for i, char := range base{
+		if char == '+' || char == '-'{
+			return 0
+		}
+		if !seen[char]{
+			seen[char] = true
+		}else{
+			return 0
+		}
+		baseM[char] = i
+	}
+	
+	for _, char := range s{
+		result = result * len(base) + baseM[char]
+	}
+	return result
+} */
