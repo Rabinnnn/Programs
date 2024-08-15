@@ -2,23 +2,20 @@ package main
 
 import (
 	"fmt"
-	//"strconv"
-	//"sort"
 	"os"
-	// "sort"
-	//"strconv"
+	
 )
 
 func main() {
 
-	if os.Args[1] == ""{
-		fmt.Println("1")
+	if len(os.Args) != 3{
 		return
 	}
-fmt.Println(wdmatch(os.Args[1],os.Args[2]))
+	
+ wdmatch(os.Args[1],os.Args[2])
 }
 
-func wdmatch(s1,s2 string)int{
+func wdmatch(s1,s2 string){
 	count := 0
 	res := ""
 	for i := 0; i < len(s1); i++{
@@ -31,9 +28,8 @@ func wdmatch(s1,s2 string)int{
 			count++
 		}
 	}
-	fmt.Println(res)
-	if res == s1{
-		return 1
+	if res == s1{	
+		fmt.Println(s1)
 	}
-	return 0
+	return 
 }

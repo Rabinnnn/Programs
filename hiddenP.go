@@ -10,7 +10,9 @@ import (
 )
 
 func main() {
-
+	if len(os.Args) != 3{
+		return
+	}
 	if os.Args[1] == ""{
 		fmt.Println("1")
 		return
