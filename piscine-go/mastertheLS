@@ -1,0 +1,2 @@
+ls -t -A | paste  -sd ","
+// ls -lAt --ignore=".*" --ignore="." --ignore=".." --format=commas --indicator-style=slash > mastertheLS
