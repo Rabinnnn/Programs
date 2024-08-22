@@ -7,7 +7,6 @@ func Slice(a []string, nbrs ...int) []string {
 	if len(nbrs) == 0 {
 		return []string{}
 	}
-
 	// Handle the case where only one integer is provided
 	start := nbrs[0]
 	end := len(a) // Default end is the length of the slice

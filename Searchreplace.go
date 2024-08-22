@@ -19,8 +19,7 @@ func srep(s1 string, s2 string, s3 string)string{
 	r1 := []rune(s1)
 	r2 := []rune(s2)
 	r3 := []rune(s3)
-	fmt.Println(string(r2[0]))
-	fmt.Println(string(r3[0]))
+
 	for _, char := range r1{
 		if char == r2[0]{
 			char = r3[0]
