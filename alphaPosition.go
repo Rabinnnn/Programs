@@ -14,7 +14,6 @@ func main() {
 }
 
 func AlphaPosition(c rune) int {
-	// your code goes here
 	s1 := ""
 	for i := 'a'; i <= 'z'; i++ {
 		s1 += string(i)

@@ -30,10 +30,11 @@ func Slice(a []string, nbrs ...int) []string {
 		end = len(a)
 	}
 
-	// Return the slice from start to end
+	
 	if start > end {
 		return []string(nil) // If start is greater than end, return an empty slice
 	}
+	// Return the slice from start to end
 	return a[start:end]
 }
 

@@ -1,46 +1,75 @@
 package main
-
 import (
 	"fmt"
-	"strings"
-	//"strconv"
+	"strconv"
 )
 
+
 func ZipString(s string) string {
-	words := strings.Fields(s)
-	var result strings.Builder
-
-	for i, word := range words {
-		if i > 0 {
-			result.WriteString("1 ")
+	words := Split(s)
+	charCount := make(map[byte]int)
+	count := 1
+	var res string
+	for j, word := range words{
+		for i := 0; i < len(word); i++{
+			if i != len(word)-1 && word[i+1] == word[i]{
+				count++
+			}else{
+				charCount[word[i]] = count
+				count = 1
+			}
 		}
-		result.WriteString(processWord(word))
-	}
 
-	return result.String()
+		str := Rdup(word)
+		for i := 0; i < len(str); i++{
+			res += strconv.Itoa(charCount[str[i]]) + string(str[i])
+		}
+		if j != len(words)-1{
+			res = res + "1 "
+		}
+
+		
+		
+	}
+	
+	
+return res
 }
 
-func processWord(word string) string {
-	var compressed strings.Builder
-	charCount := make(map[rune]int)
-	seen := make(map[rune]bool)
-
-	// Count occurrences of each character in the word
-	for _, char := range word {
-		charCount[char]++
-	}
-
-	// Build the compressed word
-	for _, char := range word {
-		if !seen[char] {
-			seen[char] = true
-			compressed.WriteString(fmt.Sprintf("%d%c", charCount[char], char))
+func Rdup(s string)string{
+	//var seen bool
+	var res string
+	for i := 0; i < len(s); i++{
+		if i != len(s)-1 && s[i+1] == s[i]{
+			continue
+		}else{
+			res += string(s[i])
 		}
-	}
 
-	return compressed.String()
+	}
+	return res
 }
 
+
+func Split(s string)[]string{
+	var res []string
+	var word string
+	for _, char := range s{
+		if char == ' '{
+			if word != ""{
+				res = append(res, word)
+				word = ""
+			}
+		}else {
+			word += string(char)
+		}
+	}
+	if word != ""{
+		res = append(res, word)
+		word = ""
+	}
+	return res
+}
 func main() {
 	fmt.Println(ZipString("YouuungFellllas"))
 	fmt.Println(ZipString("Thee quuick browwn fox juumps over the laaazy dog"))
